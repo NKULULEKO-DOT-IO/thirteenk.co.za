@@ -267,7 +267,7 @@ export async function getStats() {
 The application supports multiple languages through the Next.js internationalization system:
 
 ```tsx
-// middleware.ts
+// middleware.ts.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
