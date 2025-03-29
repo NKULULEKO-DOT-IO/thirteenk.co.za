@@ -2,9 +2,9 @@ name: ThirteenK Frontend CI/CD
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master, uat ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ master, uat ]
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
