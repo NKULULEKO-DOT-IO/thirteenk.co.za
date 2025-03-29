@@ -37,7 +37,7 @@ on:
 env:
   PROJECT_ID: 'secrets.GCP_PROJECT_ID' # TODO: update to your Google Cloud project ID
   REGION: 'secrets.GCP_REGION' # TODO: update to your region
-  SERVICE: 'thirteenk-frontend' # TODO: update to your service name
+  SERVICE: 'thirteenk-frontend' # TODO: update to your servi name
   WORKLOAD_IDENTITY_PROVIDER: 'projects/227629318480/locations/global/workloadIdentityPools/github' # TODO: update to your workload identity provider
 
 jobs:
