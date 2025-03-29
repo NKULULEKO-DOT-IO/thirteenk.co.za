@@ -5,12 +5,12 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package.json package-lock.json* ./
-RUN npm ci --force
+RUN npm ci
 
 # Copy application code
 COPY . .
 
-# Set environment variables (these will be overridden at runtime)
+# Set environment variables from build args
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
@@ -30,7 +30,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Copy necessary files from builder stage
-COPY --from=builder /app/next.config.ts ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
@@ -44,7 +44,7 @@ USER nextjs
 # Expose port
 EXPOSE 3000
 
-# Cloud Run will set PORT environment variable
+# Set the port environment variable
 ENV PORT 3000
 
 # Start the NextJS application

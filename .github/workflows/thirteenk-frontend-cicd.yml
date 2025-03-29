@@ -1,0 +1,81 @@
+name: ThirteenK Frontend CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  SERVICE_NAME: thirteenk-frontend
+  REGION: ${{ secrets.GCP_REGION }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set environment variables based on branch
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "ENVIRONMENT=production" >> $GITHUB_ENV
+            echo "SERVICE_SUFFIX=" >> $GITHUB_ENV
+            echo "API_URL=https://thirteenkapi-dot-${{ secrets.GCP_PROJECT_ID }}.run.app/api/${{ secrets.API_VERSION }}" >> $GITHUB_ENV
+            echo "APP_URL=https://app.thirteenk.com" >> $GITHUB_ENV
+          else
+            echo "ENVIRONMENT=uat" >> $GITHUB_ENV
+            echo "SERVICE_SUFFIX=-uat" >> $GITHUB_ENV
+            echo "API_URL=https://thirteenkapi-uat-dot-${{ secrets.GCP_PROJECT_ID }}.run.app/api/${{ secrets.API_VERSION }}" >> $GITHUB_ENV
+            echo "APP_URL=https://uat.thirteenk.com" >> $GITHUB_ENV
+          fi
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ env.API_URL }}
+          tags: |
+            gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}${{ env.SERVICE_SUFFIX }}:${{ github.sha }}
+            gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}${{ env.SERVICE_SUFFIX }}:latest
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          service: ${{ env.SERVICE_NAME }}${{ env.SERVICE_SUFFIX }}
+          image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}${{ env.SERVICE_SUFFIX }}:latest
+          region: ${{ env.REGION }}
+          flags: --allow-unauthenticated --port=3000
+          env_vars: |
+            NEXT_PUBLIC_API_URL=${{ env.API_URL }}
+            NEXT_AUTH_SECRET=${{ secrets.NEXT_AUTH_SECRET }}
+            NEXT_AUTH_URL=${{ env.APP_URL }}
+            AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }}
+            AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}
+            AUTH_GOOGLE_ID=${{ secrets.AUTH_GOOGLE_ID }}
+            AUTH_GOOGLE_SECRET=${{ secrets.AUTH_GOOGLE_SECRET }}
+
+      - name: Test deployment
+        run: |
+          DEPLOY_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }}${{ env.SERVICE_SUFFIX }} --platform managed --region ${{ env.REGION }} --format 'value(status.url)')
+          if curl -f -s -o /dev/null "$DEPLOY_URL"; then
+            echo "Deployment verified successfully at $DEPLOY_URL"
+          else
+            echo "Deployment verification failed"
+            exit 1
+          fi
