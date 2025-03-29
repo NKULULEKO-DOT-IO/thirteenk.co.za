@@ -88,6 +88,14 @@ jobs:
           # NOTE: If using a pre-built image, update the image name below:
 
           image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}'
+          env_vars: |
+            NEXT_PUBLIC_API_URL=${{ env.API_URL }}
+            NEXT_AUTH_SECRET=${{ secrets.NEXT_AUTH_SECRET }}
+            NEXT_AUTH_URL=${{ env.APP_URL }}
+            AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }}
+            AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}
+            AUTH_GOOGLE_ID=${{ secrets.AUTH_GOOGLE_ID }}
+            AUTH_GOOGLE_SECRET=${{ secrets.AUTH_GOOGLE_SECRET }}
       # If required, use the Cloud Run URL output in later steps
       - name: 'Show output'
         run: |2-
