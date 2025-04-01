@@ -33,6 +33,8 @@ pids
 
 # production
 /build
+gcloud-service-key.json
+
 
 # misc
 .DS_Store
