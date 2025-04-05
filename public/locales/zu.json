@@ -1,0 +1,28 @@
+{
+  "Common": {
+    "home": "Ikhaya",
+    "gallery": "Igalari",
+    "about": "Mayelana Nathi",
+    "terms": "Imigomo Yokusebenzisa",
+    "privacy": "Inqubomgomo Yemfihlo",
+    "navigation": "Ukuzulazula",
+    "legal": "Ezomthetho",
+    "contact": "Xhumana Nathi",
+    "allRightsReserved": "Amalungelo agodliwe.",
+    "footerTagline": "Isizinda sezithombe ezibalulekile zokunezezela isiko laseNingizimu Afrika."
+  },
+  "HomePage": {
+    "title": "Izithombe Zesiko LaseNingizimu Afrika",
+    "subtitle": "Landa izithombe eziphakeme ezibamba umoya nobuhle baseNingizimu Afrika.",
+    "about": "Mayelana Nathi",
+    "footer": "Zonke izithombe zimahhala ukulanda nokusebenzisa kumaphrojekthi angasese nasemabhizinisini.",
+    "totalDownloads": "Inani Lokulanda",
+    "download": "Landa"
+  },
+  "DownloadSection": {
+    "download": "Landa",
+    "downloading": "Iyalanda...",
+    "totalDownloads": "Isibalo Sokulanda",
+    "downloadFailed": "Ukulanda kuhlulekile. Sicela uzame futhi."
+  }
+}

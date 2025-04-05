@@ -1,0 +1,28 @@
+{
+  "Common": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "about": "About",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "contact": "Contact",
+    "allRightsReserved": "All rights reserved.",
+    "footerTagline": "A cultural digital content platform focusing on South African imagery."
+  },
+  "HomePage": {
+    "title": "South African Cultural Imagery",
+    "subtitle": "Download high-quality images that capture the essence and beauty of South Africa.",
+    "about": "About Us",
+    "footer": "All images are free to download and use for personal and commercial projects.",
+    "totalDownloads": "Total Downloads",
+    "download": "Download"
+  },
+  "DownloadSection": {
+    "download": "Download",
+    "downloading": "Downloading...",
+    "totalDownloads": "Total Downloads",
+    "downloadFailed": "Download failed. Please try again."
+  }
+}
