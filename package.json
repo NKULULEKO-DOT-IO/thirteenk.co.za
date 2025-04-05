@@ -30,3 +30,37 @@
     "typescript": "^5"
   }
 }
+
+{
+  "name": "thirteenk.co.za",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy:dev": "cross-env NODE_ENV=development node deploy.js",
+    "deploy:prod": "cross-env NODE_ENV=production node deploy.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "next": "15.2.3",
+    "next-intl": "^4.0.2",
+    "postcss": "^8.5.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.17"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.0.17",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.3",
+    "typescript": "^5"
+  }
+}
