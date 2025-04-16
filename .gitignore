@@ -34,7 +34,7 @@ pids
 # production
 /build
 gcloud-service-key.json
-
+deploy.js
 
 # misc
 .DS_Store
@@ -122,6 +122,7 @@ web_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 .env.local
 
 # parcel-bundler cache (https://parceljs.org/)

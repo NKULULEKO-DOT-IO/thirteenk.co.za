@@ -9,20 +9,41 @@
     "legal": "Legal",
     "contact": "Contact",
     "allRightsReserved": "All rights reserved.",
-    "footerTagline": "A cultural digital content platform focusing on South African imagery."
+    "footerTagline": "A cultural digital content platform focusing on South African imagery.",
+    "download": "Download",
+    "processing": "Processing...",
+    "totalDownloads": "Total Downloads",
+    "errorOccurred": "An error occurred",
+    "tryAgain": "Try Again",
+    "downloads": "Downloads",
+    "close": "Close"
   },
   "HomePage": {
-    "title": "South African Cultural Imagery",
     "subtitle": "Download high-quality images that capture the essence and beauty of South Africa.",
     "about": "About Us",
     "footer": "All images are free to download and use for personal and commercial projects.",
     "totalDownloads": "Total Downloads",
-    "download": "Download"
+    "download": "Download",
+    "gallery": "Gallery",
+    "featured": "Featured Images",
+    "businessPlan": "View Open Source Business Plan",
+    "errorLoading": "Error Loading",
+    "title": "THIRTEENK - South African Digital Content",
+    "description": "A cultural digital content platform focusing on South African imagery.",
+    "featuredImages": "Featured Images",
+    "refresh": "Refresh",
+    "loading": "Loading...",
+    "noMoreImages": "You've reached the end of our collection",
+    "noImages": "No Images"
   },
   "DownloadSection": {
     "download": "Download",
     "downloading": "Downloading...",
     "totalDownloads": "Total Downloads",
     "downloadFailed": "Download failed. Please try again."
+  },
+  "Footer": {
+    "copyrightText": "© 2025 Thirteenk. All rights reserved.",
+    "businessPlan": "View Open Source Business Plan"
   }
 }
