@@ -102,7 +102,7 @@ function deploy() {
 
 
     console.log('# Set environment variables for NextJS');
-    runCommand(`gcloud run services update thirteenk-frontend-service --region us-central1 --set-env-vars="NEXT_PUBLIC_API_URL=https://thirteenkapi-service-227629318480.us-central1.run.app/api/v1"`);
+    runCommand(`gcloud run services update thirteenk-frontend-service --region us-central1 --set-env-vars="NEXT_PUBLIC_API_URL=https://thirteenkapi-service-hii3wfspiq-uc.a.run.app/api/v1"`);
 
     // Clean up
     console.log('Cleaning up...');

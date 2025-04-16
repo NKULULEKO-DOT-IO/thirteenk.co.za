@@ -26,6 +26,13 @@ export default async function RootLayout({
 
   return (
     <html lang={validLocale}>
+    <head>
+      <meta
+        httpEquiv="Content-Security-Policy"
+        content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://storage.googleapis.com blob: data:; connect-src 'self' http://localhost:8000 http://thirteenkapi-service-hii3wfspiq-uc.a.run.app https://thirteenkapi-service-hii3wfspiq-uc.a.run.app http://api.thirteenk.co.za https://api.thirteenk.co.za;"
+      />
+      <title>THIRTEENK</title>
+    </head>
     <body className="bg-white text-gray-900 min-h-screen">
     <NextIntlClientProvider locale={validLocale} messages={messages}>
       {children}

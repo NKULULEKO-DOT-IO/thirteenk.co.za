@@ -251,7 +251,7 @@ export async function getImageById(id) {
 }
 
 export async function downloadImage(imageId) {
-  return fetchAPI('/downloads', {
+  return fetchAPI('/download', {
     method: 'POST',
     body: JSON.stringify({ image_id: imageId }),
   });
