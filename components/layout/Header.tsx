@@ -25,12 +25,12 @@ const Header: FC<HeaderProps> = ({
 
           <div className="flex items-center space-x-4">
               <Link
-                  className="py-2 px-6 shadow-md rounded-md bg-blue-100 inline-block hover:bg-blue-200 transition-colors"
+                  className="mx-1 text-sm py-2 px-4 shadow-md rounded-md bg-blue-100 inline-block hover:bg-blue-200 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://docs.google.com/document/d/1o0tT70ECWV11YB4oYH9RkkdllyLeO_ld8CEwGE3wlAg/edit?usp=sharing"
               >
-                  {'View Open Source Business Plan'}
+                  {'View Business Plan'}
               </Link>
             <DownloadCounter
               totalDownloads={totalDownloads}
